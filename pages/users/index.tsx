@@ -1,15 +1,15 @@
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps } from 'next';
+import User from '../../components/user';
+import { IUser } from '../../types';
 
-const UsersList: NextPage = (props: any) => {
-  const { users } = props;
+const UsersList: NextPage<Props> = ({ users }) => {
   return (
     <>
       <h1>Users list:</h1>
       {users.map((user: any) => {
         return (
           <div key={user.id}>
-            <h2>{user.name}</h2>
-            <h2>{user.email}</h2>
+            <User user={user} />
           </div>
         );
       })}
@@ -19,12 +19,16 @@ const UsersList: NextPage = (props: any) => {
 
 export default UsersList;
 
-export async function getStaticProps(): Promise<{ props: any }> {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const users: [] = await response.json();
   return {
     props: {
       users,
     },
   };
-}
+};
+
+type Props = {
+  users: IUser[];
+};
