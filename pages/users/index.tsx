@@ -19,9 +19,11 @@ const UsersList: NextPage<Props> = ({ users }) => {
 
 export default UsersList;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: Props;
+}> => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users: [] = await response.json();
+  const users = await response.json();
   return {
     props: {
       users,
