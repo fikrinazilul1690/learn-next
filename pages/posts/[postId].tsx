@@ -1,8 +1,15 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { IPost } from '../../types';
 import { ParsedUrlQuery } from 'querystring';
+import { useRouter } from 'next/router';
 
 const Post: NextPage<Props> = ({ post }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <h2>
@@ -28,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
@@ -39,6 +46,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
 
   const data = await response.json();
+
+  if (!data.id) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
