@@ -17,3 +17,10 @@ export interface IProduct {
   price: number;
   description: string;
 }
+
+export interface INews {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+}
