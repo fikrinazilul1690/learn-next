@@ -10,3 +10,10 @@ export interface IPost {
   title: string;
   body: string;
 }
+
+export interface IProduct {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+}
