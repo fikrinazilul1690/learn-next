@@ -24,3 +24,10 @@ export interface INews {
   description: string;
   category: string;
 }
+
+export interface IDashboard {
+  posts: number;
+  likes: number;
+  followers: number;
+  following: number;
+}
