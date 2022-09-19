@@ -29,7 +29,7 @@ const Dashboard = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [dashboardData]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
