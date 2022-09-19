@@ -20,8 +20,11 @@ const EventList: NextPage<Props> = ({ eventList }) => {
 
   useEffect(() => {
     router.beforePopState(({ as }) => {
-      window.location.href = as;
-      return false;
+      if (window.location.pathname === '/events') {
+        window.location.href = as;
+        return false;
+      }
+      return true;
     });
   }, []);
 
