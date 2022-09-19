@@ -31,3 +31,7 @@ export interface IDashboard {
   followers: number;
   following: number;
 }
+
+export interface IEvent extends INews {
+  date: string;
+}
