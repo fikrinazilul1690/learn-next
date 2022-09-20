@@ -36,7 +36,7 @@ const Home: NextPage = () => {
             </a>
           </Link>
 
-          <Link href={'product'}>
+          <Link href={'products'}>
             <a className={styles.card}>
               <h2>Product &rarr;</h2>
               <p>Discover and deploy boilerplate example Next.js projects.</p>

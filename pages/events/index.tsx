@@ -26,6 +26,8 @@ const EventList: NextPage<Props> = ({ eventList }) => {
       }
       return true;
     });
+
+    return () => router.beforePopState(() => true);
   }, []);
 
   return (
